@@ -32,6 +32,9 @@ bool part4Complete;
 bool part5Complete;
 
 void setup() {
+
+// Set up the interactions 
+
   Servo1.attach(3);
   Mac.attach(12);
   finalDoor.attach(7);
@@ -47,7 +50,7 @@ void setup() {
   pinMode(rgb2, OUTPUT);
 
 
-
+// Don't run other interactions until previous interactions before that are complete
 
 
   part1Complete = false;
@@ -71,6 +74,8 @@ void loop(){
   copperSwitchVal4 = digitalRead(copperSwitch4);
   copperSwitchVal5 = digitalRead(copperSwitch5);
 
+// Spin the pit crew around quickly
+
  
   if (copperSwitchVal == HIGH){
     Servo1.write(180);
@@ -84,6 +89,9 @@ void loop(){
     Servo1.write(90);
 
   }
+
+// Turn on the finish line light
+  
   if (part1Complete == true && copperSwitchVal2){
  
     setColor1(255, 255, 255);
@@ -95,6 +103,8 @@ void loop(){
   else{
     setColor1(0, 0, 0);
   }
+
+// Turn Mack by 90 degrees counterclockwise. 
 
 
   if (part2Complete = true && copperSwitchVal3 == HIGH){
@@ -110,6 +120,7 @@ void loop(){
     Mac.write(90);
   }
 
+// Turn on the light inside the building in Radiator Springs. 
 
   if(part3Complete == true && copperSwitchVal4 == HIGH){
     setColor2(255, 255, 255);
@@ -123,6 +134,8 @@ void loop(){
     setColor2(0, 0, 0);
   }
  
+
+// Move around the door with the arrows pointing towards the King. 
 
   if(part4Complete == true && copperSwitchVal5 == HIGH){
     finalDoor.write(180);
